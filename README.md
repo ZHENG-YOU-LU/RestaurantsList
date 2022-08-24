@@ -6,17 +6,17 @@
 ## 功能列表
 
 - 使用者可以在首頁看到所有餐廳與它們的簡單資料：
- - 餐廳照片
- - 餐廳名稱
- - 餐廳分類
- - 餐廳評分
+  - 餐廳照片
+  - 餐廳名稱
+  - 餐廳分類
+  - 餐廳評分
 
 - 使用者可以再點進去看餐廳的詳細資訊：
- - 類別
- - 地址
- - 電話
- - 描述
- - 圖片
+  - 類別
+  - 地址
+  - 電話
+  - 描述
+  - 圖片
 
 - 使用者可以透過搜尋餐廳名稱來找到特定的餐廳
 
@@ -26,15 +26,15 @@
 
 ![index](/images/1.jpg)
 
-![index2](/images/2.jpg)
+![index2](/images/3.jpg)
 
-![show](/images/3.jpg)
+![show](/images/2.jpg)
 
 ## 使用工具
 
 - [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
 - [Express](https://www.npmjs.com/package/express) - 應用程式架構
-[Express-Handlebars](https://www.npmjs.com/package/express-handlebars) - 模板引擎
+- [Express-Handlebars](https://www.npmjs.com/package/express-handlebars) - 模板引擎
 
 ## 開發者
 
