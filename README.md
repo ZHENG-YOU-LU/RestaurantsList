@@ -30,7 +30,7 @@
 
 ## 畫面預覽
 
-![index](/images/4.jpg)
+![index](/images/7.jpg)
 
 ![index2](/images/5.jpg)
 
