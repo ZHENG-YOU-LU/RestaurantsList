@@ -36,6 +36,28 @@
 
 ![show](/images/6.jpg)
 
+## 安裝
+1. 複製專案，在終端機輸入：
+```
+git clone https://github.com/ZHENG-YOU-LU/RestaurantsList
+```
+2. 進入專案資料夾，在終端機輸入：
+```
+cd RestaurantsList
+```
+3. 安裝`npm`套件。在終端機輸入：
+```
+npm init -y
+```
+4. 執行專案。在終端機輸入：
+```
+npm run dev
+```
+5. 於瀏覽器網址列輸入：
+```
+localhost:3000
+```
+
 ## 使用工具
 
 - [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
