@@ -49,11 +49,15 @@ cd RestaurantsList
 ```
 npm init -y
 ```
-4. 執行專案。在終端機輸入：
+4. 設定暫時環境變數以連接 MongoDB 資料庫，請在終端機輸入：
+```
+export RESTAURANT_URI = "mongodb+srv://您的帳號:您的密碼@cluster0.euvhff2.mongodb.net/restaurant-list?retryWrites=true&w=majority"
+```
+5. 執行專案。在終端機輸入：
 ```
 npm run dev
 ```
-5. 於瀏覽器網址列輸入：
+6. 於瀏覽器網址列輸入：
 ```
 localhost:3000
 ```
