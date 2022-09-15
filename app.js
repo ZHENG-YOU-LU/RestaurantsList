@@ -22,5 +22,5 @@ app.use(methodOverride('_method'))
 app.use(routes)
 
 app.listen(3000 ,() => {
-	console.log(`Express is running on http://localhost/${3000}`)
+	console.log(`Express is running on http://localhost:${3000}`)
 })
