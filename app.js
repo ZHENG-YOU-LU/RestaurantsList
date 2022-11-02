@@ -30,6 +30,12 @@ app.use(methodOverride('_method'))
 
 usePassport(app) //這條要寫在 路由 app.use(routes) 之前
 
+app.use((req, res, next) => {
+	res.locals.isAuthenticated = req.isAuthenticated()
+	res.locals.user = req.user
+	next()
+})
+
 app.use(routes) // 將 request 導入路由器
 
 app.listen(PORT ,() => {
