@@ -10,10 +10,13 @@ const todos = require('./modules/todos')
 // 引入 users 模組程式碼
 const users = require('./modules/users')
 
+const auth = require('./modules/auth')
+
 const { authenticator } = require('../middleware/auth')
 
 router.use('/restaurants', authenticator, todos)
 router.use('/users', users)
+router.use('/auth', auth)
 router.use('/', authenticator, home)
 
 module.exports = router

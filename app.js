@@ -4,12 +4,17 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override') // 載入 method-override
 const flash = require('connect-flash')
+
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').config()
+}
+
 const routes = require('./routes') // 引用路由器
 const usePassport = require('./config/passport')
 
 require('./config/mongoose')
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT
 
 app.engine('handlebars' ,exphbs({ defaultLayout:'main' }))
 app.set('view engine', 'handlebars')
@@ -21,7 +26,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(session({
-	secret: 'ThisIsMySecret',
+	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: true
 }))
