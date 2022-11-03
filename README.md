@@ -36,11 +36,11 @@
 
 ## 畫面預覽
 
-![index](/images/7.jpg)
+![index](/images/8.jpg)
 
-![index2](/images/5.jpg)
+![index2](/images/9.jpg)
 
-![show](/images/6.jpg)
+![show](/images/10.jpg)
 
 ## 安裝
 1. 複製專案，在終端機輸入：
