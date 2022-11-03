@@ -1,13 +1,46 @@
+const bcrypt = require('bcryptjs')
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').config()
+}
 const Todo = require('../todo')
-const restaurantList = require("../../restaurant.json").results
+const User = require('../user')
+const restaurantList = require('./restaurant.json').results
 const db =require('../../config/mongoose')
 
+const SEED_USER = [{
+	name: 'user1',
+	email: 'user1@example.com',
+	password: '12345678',
+	collection: [0, 1, 2]
+}, {
+	name: 'user2',
+	email: 'user2@example.com',
+	password: '12345678',
+	collection: [3, 4, 5]
+}]
+
 db.once('open', () => {
-	
-	Todo.create(restaurantList)
+	Promise.all(SEED_USER.map((data) =>
+		bcrypt
+			.genSalt(10)
+			.then(salt => bcrypt.hash(data.password, salt))
+			.then(hash => {
+				return User.create({
+					name: data.name,
+					email: data.email,
+					password: hash
+				})
+			})
+			.then(user => {
+				const restaurants = data.collection.map(index => {
+				restaurantList[index].userId = user._id
+					return restaurantList[index]
+				})
+				return Todo.create(restaurants)
+			})
+	))
 		.then(() => {
-			console.log("restaurantSeeder done!")
-			db.close()
+			console.log('restaurantList done.')
+			process.exit()
 		})
-		.catch(err => console.log(err))
 })
