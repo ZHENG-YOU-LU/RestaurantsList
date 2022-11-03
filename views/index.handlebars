@@ -16,20 +16,20 @@
 			</form>
 		</div>
 	</div>
-
+	{{#if home}}
 	<div class="d-flex align-items-center justify-content-end mb-3">
 		<i class="fa-solid fa-arrow-up-arrow-down text-secondary"></i>
-		<form>
-			<select class="form-select" id="sort" name="sort">
-				<option selected>選擇排序</option>
-				<option>A -> Z</option>
-				<option>Z -> A</option>
-				<option>類別</option>
-				<option>地區</option>
+		<form action="/">
+			<label for="sort">排序：</label>
+			<select class="sort" name="sort" id="sort" onchange="this.form.submit()">
+				<option value="a-z" {{#if option1}}selected{{/if}}>A -> Z</option>
+				<option value="z-a" {{#if option2}}selected{{/if}}>Z -> A</option>
+				<option value="category" {{#if option3}}selected{{/if}}>類別</option>
+				<option value="location" {{#if option4}}selected{{/if}}>地區</option>
 			</select>
 		</form>
 	</div>
-
+	{{/if}}
 </div>
 
 <!-- restaurant list -->
