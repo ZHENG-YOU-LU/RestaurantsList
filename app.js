@@ -3,6 +3,7 @@ const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override') // 載入 method-override
+const flash = require('connect-flash')
 const routes = require('./routes') // 引用路由器
 const usePassport = require('./config/passport')
 
@@ -30,9 +31,13 @@ app.use(methodOverride('_method'))
 
 usePassport(app) //這條要寫在 路由 app.use(routes) 之前
 
+app.use(flash())
+
 app.use((req, res, next) => {
 	res.locals.isAuthenticated = req.isAuthenticated()
 	res.locals.user = req.user
+	res.locals.success_msg = req.flash('success_msg')
+	res.locals.warning_msg = req.flash('warning_msg')
 	next()
 })
 
