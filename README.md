@@ -61,7 +61,7 @@ FACEBOOK_ID=SKIP
 FACEBOOK_SECRET=SKIP
 FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
 SESSION_SECRET=ThisIsMySecret
-MONGODB_URI=mongodb+srv://您的帳號:您的密碼@cluster0.euvhff2.mongodb.net/restaurant-list?retryWrites=true&w=majority
+RESTAURANT_URI=mongodb+srv://您的帳號:您的密碼@cluster0.euvhff2.mongodb.net/restaurant-list?retryWrites=true&w=majority
 PORT=3000
 ```
 5. 建立種子資料，在終端機輸入:
