@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 if (process.env.NODE_ENV !== 'production') {
 	require('dotenv').config()
 }
-const Todo = require('../todo')
+const Restaurant = require('../restaurant')
 const User = require('../user')
 const restaurantList = require('./restaurant.json').results
 const db =require('../../config/mongoose')
@@ -36,7 +36,7 @@ db.once('open', () => {
 				restaurantList[index].userId = user._id
 					return restaurantList[index]
 				})
-				return Todo.create(restaurants)
+				return Restaurant.create(restaurants)
 			})
 	))
 		.then(() => {

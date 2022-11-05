@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Todo = require('../../models/todo')
+const Restaurant = require('../../models/restaurant')
 
 // index
 router.get('/', (req, res) => {
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 	const home = true
 	let sort = req.query.sort
 	const userId = req.user._id
-	Todo.find({ userId })
+	Restaurant.find({ userId })
 		.lean()
 		.sort(sortSelector(sort))
 		.then(restaurants => res.render('index', {

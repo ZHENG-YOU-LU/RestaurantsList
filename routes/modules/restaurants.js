@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Todo = require('../../models/todo')
+const Restaurant = require('../../models/restaurant')
 
 // search
 router.get('/search', (req, res) => {
@@ -10,7 +10,7 @@ router.get('/search', (req, res) => {
 	const userId = req.user._id
 	const keywords = req.query.keywords
 	const keyword = req.query.keywords.trim().toLowerCase()
-	return Todo.find({ userId })
+	return Restaurant.find({ userId })
 		.lean()
 		.then(restaurants => {
 			const filterRestaurants = restaurants.filter(
@@ -30,7 +30,7 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
 	const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
 	const userId = req.user._id
-	return Todo.create({
+	return Restaurant.create({
 		name,
 		name_en,
 		category,
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 router.get("/:id", (req, res) => {
 	const userId = req.user._id
 	const _id = req.params.id
-	return Todo.findOne({ _id, userId})
+	return Restaurant.findOne({ _id, userId})
 		.lean()
 		.then(restaurants => res.render("show", { restaurants }))
 		.catch(err => console.log(err))
@@ -60,7 +60,7 @@ router.get("/:id", (req, res) => {
 router.get("/:id/edit", (req, res) => {
 	const userId = req.user._id
 	const _id = req.params.id
-	return Todo.findOne({ _id, userId })
+	return Restaurant.findOne({ _id, userId })
 		.lean()
 		.then(restaurants => res.render("edit", { restaurants }))
 		.catch(err => console.log(err))
@@ -71,7 +71,7 @@ router.put("/:id", (req, res) => {
 	const userId = req.user._id
 	const _id = req.params.id
 	const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
-	return Todo.findOne({_id, userId})
+	return Restaurant.findOne({_id, userId})
 		.then(restaurant => {
 			restaurant.name = name
 			restaurant.name_en = name_en
@@ -92,7 +92,7 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
 	const userId = req.user._id
 	const _id = req.params.id
-	return Todo.findOne({ _id, userId })
+	return Restaurant.findOne({ _id, userId })
 		.then(todo => todo.remove())
 		.then(() => res.redirect("/"))
 		.catch(err => console.log(err))
