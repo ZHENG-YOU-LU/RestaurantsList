@@ -7,10 +7,10 @@ router.get('/search', (req, res) => {
 	if (!req.query.keywords) {
 		return res.redirect("/")
 	}
-
+	const userId = req.user._id
 	const keywords = req.query.keywords
 	const keyword = req.query.keywords.trim().toLowerCase()
-	return Todo.find()
+	return Todo.find({ userId })
 		.lean()
 		.then(restaurants => {
 			const filterRestaurants = restaurants.filter(
