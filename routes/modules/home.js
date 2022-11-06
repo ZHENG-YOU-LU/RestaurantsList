@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const Restaurant = require('../../models/restaurant')
 
 // index
@@ -21,7 +20,13 @@ router.get('/', (req, res) => {
 		}
 	}
 	const home = true
-	let sort = req.query.sort
+	const sort = req.query.sort
+	const sortValue = {
+		option1: sort === 'a-z',
+		option2: sort === 'z-a',
+		option3: sort === 'category',
+		option4: sort === 'location',
+	}
 	const userId = req.user._id
 	Restaurant.find({ userId })
 		.lean()
@@ -29,10 +34,8 @@ router.get('/', (req, res) => {
 		.then(restaurants => res.render('index', {
 			restaurants,
 			home,
-			option1: sort === 'a-z',
-			option2: sort === 'z-a',
-			option3: sort === 'category',
-			option4: sort === 'location', }))
+			sortValue
+		}))
 		.catch(error => console.error(error))
 })
 
